@@ -1,95 +1,99 @@
 body, html {
-  margin: 0;
-  padding: 0;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  height: 100%;
+  margin: 0; padding: 0;
+  font-family: 'Arial', sans-serif;
   overflow-x: hidden;
+  background: #000;
+  color: #fff;
 }
 
-.screen {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background: #ffcce0;
+.section {
+  display: none;
+  text-align: center;
+  padding: 50px 20px;
 }
 
-.hidden { display: none; }
+.section.active {
+  display: block;
+}
 
-h1 { color: #ff197d; font-size: 2rem; margin-bottom: 1rem; }
+h1 { font-size: 2em; margin-bottom: 20px; }
 
-.btn-container { display: flex; gap: 20px; }
-
-button {
-  background: #ff197d;
-  color: white;
+.buttons button, .btn-home, #btn-haamaan {
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 1em;
   border: none;
-  border-radius: 10px;
-  padding: 10px 20px;
-  font-size: 1rem;
+  border-radius: 25px;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  background: #d12a6c;
+  color: #fff;
+  transition: transform 0.2s;
 }
 
-button:hover { transform: scale(1.1); }
+.buttons button:hover, .btn-home:hover, #btn-haamaan:hover {
+  transform: scale(1.1);
+}
 
-#heart-bg {
-  position: absolute;
-  top: 0; left: 0;
+.images-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 10px;
+  justify-items: center;
+}
+
+.images-grid img {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.images-grid img:hover {
+  transform: scale(1.1);
+}
+
+/* Cat image */
+.cat {
+  width: 150px;
+  margin: 20px 0;
+}
+
+/* Balloon animation */
+.balloons {
+  position: fixed;
   width: 100%;
   height: 100%;
-  overflow: hidden;
   z-index: -1;
+  overflow: hidden;
 }
 
-.heart {
+.balloon {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle at 50% 50%, #ffb6c1, #ff197d);
-  transform: rotate(-45deg);
-  animation: floatUp linear infinite;
+  bottom: -100px;
+  width: 40px; height: 60px;
+  background: radial-gradient(circle at 50% 40%, #ff6eb4, #ff1493);
+  border-radius: 50% 50% 50% 50%;
+  animation: float 8s linear infinite;
+  left: calc(var(--i) * 20%);
 }
 
-.heart::before,
-.heart::after {
-  content: '';
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle at 50% 50%, #ffb6c1, #ff197d);
-  border-radius: 50%;
+@keyframes float {
+  0% { transform: translateY(0) rotate(0deg);}
+  50% { transform: translateY(-500px) rotate(180deg);}
+  100% { transform: translateY(0) rotate(360deg);}
 }
 
-.heart::before { top: -25px; left: 0; }
-.heart::after { left: 25px; top: 0; }
-
-@keyframes floatUp {
-  0% { transform: translateY(100vh) rotate(-45deg); opacity:1;}
-  100% { transform: translateY(-100px) rotate(-45deg); opacity:0;}
+/* Hearts background for New Year */
+.hearts-bg {
+  position: absolute; top:0; left:0; width:100%; height:100%;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4, #fad0c4);
+  z-index: -1;
+  animation: heartsPulse 3s infinite alternate;
 }
 
-.balloon-btn {
-  position: relative;
-  margin: 10px;
-  animation: riseBalloon 3s ease forwards;
-}
-
-@keyframes riseBalloon {
-  0% { transform: translateY(200px);}
-  100% { transform: translateY(0);}
-}
-
-.modal {
-  position: fixed;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0,0,0,0.5);
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  gap:10px;
-}
-
-.photo-gallery img { width: 120px; margin: 5px; border-radius: 10px; }
+@keyframes heartsPulse {
+  0% { transform: scale(1);}
+  50% { transform: scale(1.05);}
+  100% { transform: scale(1);}
+    }
