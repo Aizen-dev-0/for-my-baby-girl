@@ -1,1 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Baby Girl 💗</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div id="app">
+
+  <!-- FIRST SCREEN -->
+  <div class="screen active" id="loveScreen">
+    <h1>Do you love me? 🥺</h1>
+    <div class="btn-group">
+      <button onclick="startApp()">Yes 💗</button>
+      <button onclick="startApp()">Hell yeahhhhhhh 😤💖</button>
+    </div>
+  </div>
+
+  <!-- MAIN SCREEN -->
+  <div class="screen" id="mainScreen">
+    <p class="typing">
+      helloww baby gurll 😘<br>
+      You wanna see something cwazyyyyy 😏??<br>
+      I'll show you something very cwazyyyyy 😏😏
+    </p>
+
+    <div class="floating-buttons">
+      <button onclick="openSorry()">sorry na 🥺</button>
+      <button onclick="openVideo()">something for you 🎥</button>
+      <button onclick="openPhotos()">my baby girl 🥰</button>
+      <button onclick="openNewYear()" id="nyBtn">new year 🎆 🔒</button>
+    </div>
+  </div>
+
+  <!-- CONTENT SCREEN -->
+  <div class="screen" id="contentScreen"></div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+  </html>
