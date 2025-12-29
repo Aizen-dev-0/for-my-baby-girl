@@ -1,73 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Baby Girl</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Baby Girl 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-pink: #ff006e; 
+            --white: rgba(255, 255, 255, 0.85);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Fixed Background path to assets folder */
+        body {
+            background-image: url('assets/bg.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 400px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+        }
+
+        section { display: none; animation: fadeIn 0.8s ease; }
+        section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+
+        h1 { font-family: 'Dancing Script', cursive; color: var(--dark-pink); font-size: 2.2rem; }
+
+        button {
+            background-color: var(--dark-pink);
+            color: white;
+            border: none;
+            padding: 14px 20px;
+            margin: 10px 0;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 0, 110, 0.3);
+        }
+
+        /* --- HEART ANIMATION --- */
+        .heart {
+            position: fixed;
+            bottom: -10%;
+            color: #ff4d6d;
+            font-size: 25px;
+            z-index: 100;
+            animation: floatUp 4s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- BALLOON ANIMATION --- */
+        .balloon-box {
+            position: relative;
+            width: 100%;
+            animation: riseUp 4s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+        }
+
+        .balloon {
+            width: 45px;
+            height: 55px;
+            background: #ff006e;
+            border-radius: 50%;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+        }
+
+        .string {
+            width: 2px;
+            height: 50px;
+            background: #666;
+            margin: 0 auto;
+        }
+
+        @keyframes riseUp {
+            from { transform: translateY(100vh); }
+            to { transform: translateY(0); }
+        }
+
+        .cut-string .balloon { transform: translateY(-100vh); opacity: 0; transition: 3s ease-in; }
+        .cut-string .string { opacity: 0; transition: 0.5s; }
+        
+        /* Floating effect after balloon is gone */
+        .cut-string button {
+            animation: gentleFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- GALLERY GRID --- */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .grid img { 
+            width: 100%; 
+            height: 120px; 
+            object-fit: cover; 
+            border-radius: 15px; 
+            border: 3px solid white;
+        }
+
+        #nahiButton { transition: opacity 0.5s ease; }
+    </style>
 </head>
 <body>
 
-<!-- Balloon background -->
-<div class="balloons">
-  <div class="balloon" style="--i:0;"></div>
-  <div class="balloon" style="--i:1;"></div>
-  <div class="balloon" style="--i:2;"></div>
-  <div class="balloon" style="--i:3;"></div>
-  <div class="balloon" style="--i:4;"></div>
-</div>
+    <section id="welcome" class="active">
+        <div class="container">
+            <h1>Do you love me? 🤨</h1>
+            <button onclick="startApp()">Yesss</button>
+            <button onclick="startApp()">Hell yeahhhhhhh</button>
+        </div>
+    </section>
 
-<!-- Sections -->
-<div id="home" class="section active">
-  <h1>Hello Baby Gurll 😘</h1>
-  <div class="buttons">
-    <button id="btn-sorry">sorry na 🥺</button>
-    <button id="btn-video">something for you</button>
-    <button id="btn-images">my baby girl</button>
-  </div>
-</div>
+    <section id="home">
+        <div class="container">
+            <p>Hlooo baby gurlll 😘<br>Do you want to see something cwazyyyyy 😏?<br>I'll show you 😏</p>
+            
+            <div id="buttonWrapper">
+                <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('sorry')">sorry na 🥺</button></div>
+                <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('video-page')">something i made for you 😅</button></div>
+                <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('gallery')">my baby girl 😅</button></div>
+                <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="checkNewYear()">Happy New Year😘</button></div>
+            </div>
+        </div>
+    </section>
 
-<div id="sorry" class="section">
-  <p>Maan jaiye na cutie ji 🥺 Pweaseeeee na 😅</p>
-  <img src="assets/cat.png" class="cat">
-  <p>Ye lijiye phool ab to maan jaiye na 😅</p>
-  <button id="btn-haamaan">Haa maan gye</button>
-</div>
+    <section id="sorry">
+        <div class="container">
+            <p>sorry na malkin ji 😅<br>Maan jaiye na 😅</p>
+            <img src="assets/cat.png" style="width: 180px; margin: 10px 0;">
+            <p>ye lijiye phool ab maan jaiye na 😅</p>
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+            <p>ab maan gyi na aap 😅</p>
+            <button onclick="showSection('home')">Haa maan gye</button>
+            <button id="nahiButton" onclick="fadeNahi()">Nahi abhi nahi mane</button>
+        </div>
+    </section>
 
-<div id="videoSection" class="section">
-  <p>Here's something I made for you 😅</p>
-  <video controls>
-    <source src="assets/video.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-  <button class="btn-home">Return Home</button>
-</div>
+    <section id="video-page">
+        <div class="container">
+            <p style="font-size: 0.9rem;">Here's something I've created for you, jyada time nahi tha to kaam chala lijiyega thoda 😅</p>
+            <video controls style="width: 100%; border-radius: 15px; margin-bottom: 10px;">
+                <source src="assets/v1.mp4" type="video/mp4">
+            </video>
+            <button onclick="showSection('home')">there's more 😅</button>
+        </div>
+    </section>
 
-<div id="imagesSection" class="section">
-  <p>Here's my cute little baby girl 😅</p>
-  <div class="images-grid">
-    <img src="assets/p1.jpg">
-    <img src="assets/p2.jpg">
-    <img src="assets/p3.jpg">
-    <img src="assets/p4.jpg">
-  </div>
-  <button class="btn-home">Return Home</button>
-</div>
+    <section id="gallery">
+        <div class="container">
+            <h1>my precious beautiful cutie 😘</h1>
+            <div class="grid">
+                <img src="assets/p1.jpg"><img src="assets/p2.jpg">
+                <img src="assets/p3.jpg"><img src="assets/p4.jpg">
+            </div>
+            <button onclick="showSection('home')">there's more 😅</button>
+        </div>
+    </section>
 
-<div id="newYear" class="section">
-  <div class="hearts-bg"></div>
-  <h1>Happy New Year My Cutie! 💖</h1>
-  <p>
-    Happy New Year my cutie 🥰!  
-    I love you forever & ever.  
-    Sorry for all the bad things I did that hurt you.  
-    You are my everything, my heart, my love.  
-    <br><br>
-    If love had a face, it would smile like you,  
-    If forever had a name,it would be us 😅
-  </p>
-</div>
+    <section id="newyear">
+        <div class="container">
+            <h1>Happy New Year! 🎆</h1>
+            <p style="font-size: 0.9rem; line-height: 1.5;">Happy New Year hamari Vidhi ji, I hope this year brings you endless smiles and happiness. I also want to say sorry if I ever hurt you in any way, I never want to make you feel sad. Let’s leave all the worries behind and make beautiful memories together this year. I love you sooo much 😘😘</p>
+            <p style="font-family: 'Dancing Script'; font-size: 1.4rem; color: var(--dark-pink);">
+                If love had a face<br>It would smile like you<br>If forever had a name,<br>It would be us 😅
+            </p>
+            <p style="font-size: 0.8rem;">Vo thoda time kam tha na to bas itna hi ho paya 😅</p>
+            <button onclick="showSection('home')">back to home page</button>
+        </div>
+    </section>
 
-<script src="script.js"></script>
+    <script>
+        // Function to create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+
+        // Logic for start button
+        function startApp() {
+            for(let i=0; i<25; i++) {
+                setTimeout(createHeart, i * 150);
+            }
+            setTimeout(() => {
+                showSection('home');
+                // Balloons fly away after 4 seconds
+                setTimeout(() => {
+                    document.querySelectorAll('.balloon-box').forEach(box => {
+                        box.classList.add('cut-string');
+                    });
+                }, 4000);
+            }, 1500);
+        }
+
+        function showSection(id) {
+            document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        function fadeNahi() {
+            document.getElementById('nahiButton').style.opacity = '0';
+            setTimeout(() => {
+                document.getElementById('nahiButton').style.display = 'none';
+            }, 500);
+        }
+
+        function checkNewYear() {
+            const now = new Date();
+            // Check if year is 2026 or later
+            if (now.getFullYear() >= 2026) {
+                showSection('newyear');
+                // Fireworks effect using hearts
+                for(let i=0; i<50; i++) {
+                    setTimeout(createHeart, i * 100);
+                }
+            } else {
+                alert("not yet have some patience till new year 😅");
+            }
+        }
+    </script>
 </body>
-</html>
+              </html>
+                                                                                                                                                         
