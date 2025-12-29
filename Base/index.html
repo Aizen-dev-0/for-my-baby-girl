@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Baby Girl 💖</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body{
+  margin:0;
+  background: linear-gradient(135deg,#ffd6e8,#fff1f7);
+  overflow:hidden;
+  text-align:center;
+}
+
+.hidden{display:none;}
+
+button{
+  padding:14px 22px;
+  border:none;
+  border-radius:30px;
+  background:#ff6fae;
+  color:white;
+  font-size:1rem;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{transform:scale(1.08);}
+
+.container{
+  width:100%;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.fade{
+  animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* typing */
+#typing{
+  font-size:1.1rem;
+  max-width:90%;
+  min-height:90px;
+}
+
+/* balloons */
+.balloon{
+  position:absolute;
+  bottom:-120px;
+  animation:floatUp 4s ease forwards;
+}
+.balloon::before{
+  content:"🎈";
+  font-size:60px;
+}
+@keyframes floatUp{
+  to{bottom:50%;}
+}
+
+/* hearts */
+.heart{
+  position:fixed;
+  bottom:0;
+  font-size:24px;
+  animation:heartUp 4s linear forwards;
+}
+@keyframes heartUp{
+  to{transform:translateY(-100vh); opacity:0;}
+}
+
+/* gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+  gap:12px;
+  max-width:90%;
+}
+.gallery img{
+  width:100%;
+  border-radius:18px;
+}
+
+/* lock */
+.locked{
+  background:#bbb;
+  cursor:not-allowed;
+}
+</style>
+</head>
+
+<body>
+
+<!-- START -->
+<div class="container fade" id="start">
+  <h2>Do you love me? 💖</h2>
+  <br>
+  <button onclick="goMain()">Yes 💗</button><br><br>
+  <button onclick="goMain()">Hell yeahhhhhhh 💖</button>
+</div>
+
+<!-- MAIN -->
+<div class="container hidden" id="main">
+  <div id="typing"></div>
+</div>
+
+<!-- BUTTONS -->
+<div class="container hidden" id="menu">
+  <button onclick="sorryPage()">sorry na 🥺</button><br><br>
+  <button onclick="videoPage()">something for you 🎥</button><br><br>
+  <button onclick="photoPage()">my baby girl 🧸</button><br><br>
+  <button id="newyearBtn" class="locked" onclick="newYear()">new year 🎆</button>
+</div>
+
+<!-- SORRY -->
+<div class="container hidden" id="sorry">
+  <p>Maan jaiye na cutie ji 🥺<br>Pweaseeeee na 😅</p>
+  <img src="assets/cat.png" width="150"><br>
+  <p>ye lijiye phool<br>ab to maan jaiye na 😅</p>
+  <p><b>maan gyi na 😅?</b></p>
+  <button onclick="accepted()">Haa maan gye 💖</button><br><br>
+  <button id="noBtn" onclick="disappear()">Nahi abhi nahi mane hai 🙄</button>
+</div>
+
+<!-- VIDEO -->
+<div class="container hidden" id="video">
+  <p>here’s something I made for you 😅</p>
+  <video src="assets/video.mp4" controls width="90%" style="border-radius:20px;"></video>
+  <br><br>
+  <button onclick="home()">there’s more ✨</button>
+</div>
+
+<!-- PHOTOS -->
+<div class="container hidden" id="photos">
+  <p>here’s my cute little baby girl 😅</p>
+  <div class="gallery">
+    <img src="assets/p1.jpg">
+    <img src="assets/p2.jpg">
+    <img src="assets/p3.jpg">
+    <img src="assets/p4.jpg">
+  </div>
+  <br>
+  <button onclick="home()">there’s more ✨</button>
+</div>
+
+<!-- NEW YEAR -->
+<div class="container hidden" id="newyear">
+  <h2>Happy New Year My Cutie 🎆</h2>
+  <p>
+  If years change, my heart doesn’t. <br>
+  I choose you today, tomorrow, and every year after. <br><br>
+
+  I’m sorry for every moment I hurt you, <br>
+  for every silence, every mistake. <br><br>
+
+  I love you — deeply, endlessly, foolishly. <br>
+  Forever and ever… it’s you. 💖
+  </p>
+</div>
+
+<script>
+function goMain(){
+  start.classList.add("hidden");
+  main.classList.remove("hidden");
+  typeText();
+}
+
+function typeText(){
+  let text=`helloww baby gurll 😘\nYou wanna se something cwazyyyyy 😏??\nI'll show you something very cwazyyyyy 😏😏`;
+  let i=0;
+  let interval=setInterval(()=>{
+    typing.innerText=text.slice(0,i);
+    i++;
+    if(i>text.length){
+      clearInterval(interval);
+      setTimeout(()=>{
+        main.classList.add("hidden");
+        menu.classList.remove("hidden");
+      },800);
+    }
+  },50);
+}
+
+function sorryPage(){menu.classList.add("hidden"); sorry.classList.remove("hidden");}
+function videoPage(){menu.classList.add("hidden"); video.classList.remove("hidden");}
+function photoPage(){menu.classList.add("hidden"); photos.classList.remove("hidden");}
+function home(){
+  video.classList.add("hidden");
+  photos.classList.add("hidden");
+  menu.classList.remove("hidden");
+}
+
+function disappear(){noBtn.style.display="none";}
+
+function accepted(){
+  for(let i=0;i<20;i++){
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"vw";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  }
+  setTimeout(()=>{
+    sorry.classList.add("hidden");
+    menu.classList.remove("hidden");
+  },1500);
+}
+
+function newYear(){
+  let now=new Date();
+  let unlock=new Date("Jan 1, 2026 00:00:00");
+  if(now<unlock){
+    alert("Come back at 12:00 AM 😉");
+  }else{
+    menu.classList.add("hidden");
+    newyear.classList.remove("hidden");
+  }
+}
+
+// unlock button automatically
+setInterval(()=>{
+  if(new Date()>=new Date("Jan 1, 2026 00:00:00")){
+    newyearBtn.classList.remove("locked");
+  }
+},1000);
+</script>
+
+</body>
+  </html>
