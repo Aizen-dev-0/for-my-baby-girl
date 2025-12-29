@@ -1,45 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>For My Baby Girl 💗</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Baby Girl</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div id="app">
-
-  <!-- FIRST SCREEN -->
-  <div class="screen active" id="loveScreen">
-    <h1>Do you love me? 🥺</h1>
-    <div class="btn-group">
-      <button onclick="startApp()">Yes 💗</button>
-      <button onclick="startApp()">Hell yeahhhhhhh 😤💖</button>
+  <!-- Start Screen -->
+  <div id="start-screen" class="screen">
+    <h1>Do you love me?</h1>
+    <div class="btn-container">
+      <button onclick="startMain('yes')">Yes</button>
+      <button onclick="startMain('hellyeah')">Hell Yeaahhh</button>
     </div>
   </div>
 
-  <!-- MAIN SCREEN -->
-  <div class="screen" id="mainScreen">
-    <p class="typing">
-      helloww baby gurll 😘<br>
-      You wanna see something cwazyyyyy 😏??<br>
-      I'll show you something very cwazyyyyy 😏😏
+  <!-- Main Screen -->
+  <div id="main-screen" class="screen hidden">
+    <div id="heart-bg"></div>
+    <div id="message"></div>
+    <div id="balloon-buttons" class="hidden">
+      <button class="balloon-btn" id="sorryBtn" onclick="showSorry()">sorry na 🥺</button>
+      <button class="balloon-btn" id="videoBtn" onclick="showVideo()">something for you 🎥</button>
+      <button class="balloon-btn" id="photosBtn" onclick="showPhotos()">my baby girl 📸</button>
+      <button class="balloon-btn" id="newYearBtn" onclick="showNewYear()">new year 🎉</button>
+    </div>
+  </div>
+
+  <!-- Sorry Modal -->
+  <div id="sorry-modal" class="modal hidden">
+    <div id="sorry-message"></div>
+    <img src="assets/cat.png" alt="cat" id="cat-doodle">
+    <div id="sorry-option" class="btn-container">
+      <button onclick="backHomeFromSorry()">Haa maan gye 😅</button>
+    </div>
+  </div>
+
+  <!-- Video Modal -->
+  <div id="video-modal" class="modal hidden">
+    <p>Here's something I made for you 😅</p>
+    <video src="assets/video.mp4" controls></video>
+    <button onclick="backHomeFromVideo()">there's more</button>
+  </div>
+
+  <!-- Photos Modal -->
+  <div id="photos-modal" class="modal hidden">
+    <p>Here's my cute little baby girl 😅</p>
+    <div class="photo-gallery">
+      <img src="assets/p1.jpg" alt="">
+      <img src="assets/p2.jpg" alt="">
+      <img src="assets/p3.jpg" alt="">
+      <img src="assets/p4.jpg" alt="">
+    </div>
+    <button onclick="backHomeFromPhotos()">there's more</button>
+  </div>
+
+  <!-- New Year Modal -->
+  <div id="newyear-modal" class="modal hidden">
+    <p id="newyear-message">
+      Happy New Year my cutie! 😘 <br>
+      I love you forever & ever 😘<br>
+      Sorry for the times I hurt you <br>
+      You are my everything 💖<br>
+      If love had a face,<br>
+      It would smile like you.<br>
+      If forever had a name,<br>
+      It would be us 😅
     </p>
-
-    <div class="floating-buttons">
-      <button onclick="openSorry()">sorry na 🥺</button>
-      <button onclick="openVideo()">something for you 🎥</button>
-      <button onclick="openPhotos()">my baby girl 🥰</button>
-      <button onclick="openNewYear()" id="nyBtn">new year 🎆 🔒</button>
-    </div>
+    
   </div>
 
-  <!-- CONTENT SCREEN -->
-  <div class="screen" id="contentScreen"></div>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
-  </html>
+</html>
