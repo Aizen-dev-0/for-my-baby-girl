@@ -1,1 +1,46 @@
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive;
+  background: pink;
+  overflow: hidden;
+}
 
+.screen {
+  display: none;
+  height: 100vh;
+  text-align: center;
+  padding: 20px;
+}
+
+.active {
+  display: block;
+}
+
+button {
+  background: #ff3f8e;
+  border: none;
+  color: white;
+  padding: 14px 20px;
+  margin: 10px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.typing {
+  animation: fadeIn 2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity:0;}
+  to {opacity:1;}
+}
+
+.floating-buttons {
+  margin-top: 30px;
+}
