@@ -1,76 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Baby Girl</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Baby Girl</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Start Screen -->
-  <div id="start-screen" class="screen">
-    <h1>Do you love me?</h1>
-    <div class="btn-container">
-      <button onclick="startMain('yes')">Yes</button>
-      <button onclick="startMain('hellyeah')">Hell Yeaahhh</button>
-    </div>
-  </div>
 
-  <!-- Main Screen -->
-  <div id="main-screen" class="screen hidden">
-    <div id="heart-bg"></div>
-    <div id="message"></div>
-    <div id="balloon-buttons" class="hidden">
-      <button class="balloon-btn" id="sorryBtn" onclick="showSorry()">sorry na 🥺</button>
-      <button class="balloon-btn" id="videoBtn" onclick="showVideo()">something for you 🎥</button>
-      <button class="balloon-btn" id="photosBtn" onclick="showPhotos()">my baby girl 📸</button>
-      <button class="balloon-btn" id="newYearBtn" onclick="showNewYear()">new year 🎉</button>
-    </div>
-  </div>
+<!-- Balloon background -->
+<div class="balloons">
+  <div class="balloon" style="--i:0;"></div>
+  <div class="balloon" style="--i:1;"></div>
+  <div class="balloon" style="--i:2;"></div>
+  <div class="balloon" style="--i:3;"></div>
+  <div class="balloon" style="--i:4;"></div>
+</div>
 
-  <!-- Sorry Modal -->
-  <div id="sorry-modal" class="modal hidden">
-    <div id="sorry-message"></div>
-    <img src="assets/cat.png" alt="cat" id="cat-doodle">
-    <div id="sorry-option" class="btn-container">
-      <button onclick="backHomeFromSorry()">Haa maan gye 😅</button>
-    </div>
+<!-- Sections -->
+<div id="home" class="section active">
+  <h1>Hello Baby Gurll 😘</h1>
+  <div class="buttons">
+    <button id="btn-sorry">sorry na 🥺</button>
+    <button id="btn-video">something for you</button>
+    <button id="btn-images">my baby girl</button>
   </div>
+</div>
 
-  <!-- Video Modal -->
-  <div id="video-modal" class="modal hidden">
-    <p>Here's something I made for you 😅</p>
-    <video src="assets/video.mp4" controls></video>
-    <button onclick="backHomeFromVideo()">there's more</button>
+<div id="sorry" class="section">
+  <p>Maan jaiye na cutie ji 🥺 Pweaseeeee na 😅</p>
+  <img src="assets/cat.png" class="cat">
+  <p>Ye lijiye phool ab to maan jaiye na 😅</p>
+  <button id="btn-haamaan">Haa maan gye</button>
+</div>
+
+<div id="videoSection" class="section">
+  <p>Here's something I made for you 😅</p>
+  <video controls>
+    <source src="assets/video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <button class="btn-home">Return Home</button>
+</div>
+
+<div id="imagesSection" class="section">
+  <p>Here's my cute little baby girl 😅</p>
+  <div class="images-grid">
+    <img src="assets/p1.jpg">
+    <img src="assets/p2.jpg">
+    <img src="assets/p3.jpg">
+    <img src="assets/p4.jpg">
   </div>
+  <button class="btn-home">Return Home</button>
+</div>
 
-  <!-- Photos Modal -->
-  <div id="photos-modal" class="modal hidden">
-    <p>Here's my cute little baby girl 😅</p>
-    <div class="photo-gallery">
-      <img src="assets/p1.jpg" alt="">
-      <img src="assets/p2.jpg" alt="">
-      <img src="assets/p3.jpg" alt="">
-      <img src="assets/p4.jpg" alt="">
-    </div>
-    <button onclick="backHomeFromPhotos()">there's more</button>
-  </div>
+<div id="newYear" class="section">
+  <div class="hearts-bg"></div>
+  <h1>Happy New Year My Cutie! 💖</h1>
+  <p>
+    Happy New Year my cutie 🥰!  
+    I love you forever & ever.  
+    Sorry for all the bad things I did that hurt you.  
+    You are my everything, my heart, my love.  
+    <br><br>
+    If love had a face, it would smile like you,  
+    If forever had a name,it would be us 😅
+  </p>
+</div>
 
-  <!-- New Year Modal -->
-  <div id="newyear-modal" class="modal hidden">
-    <p id="newyear-message">
-      Happy New Year my cutie! 😘 <br>
-      I love you forever & ever 😘<br>
-      Sorry for the times I hurt you <br>
-      You are my everything 💖<br>
-      If love had a face,<br>
-      It would smile like you.<br>
-      If forever had a name,<br>
-      It would be us 😅
-    </p>
-    
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
