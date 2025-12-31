@@ -8,7 +8,7 @@
     <style>
         :root {
             --dark-pink: #ff006e; 
-            --white: rgba(255, 255, 255, 0.85);
+            --white: rgba(255, 255, 255, 0.9);
         }
 
         body, html {
@@ -34,31 +34,32 @@
         }
 
         .container {
-            width: 85%; max-width: 400px; background: var(--white);
+            width: 85%; max-width: 420px; background: var(--white);
             padding: 25px; border-radius: 30px; text-align: center;
-            position: relative; z-index: 10; backdrop-filter: blur(8px);
+            position: relative; z-index: 10; backdrop-filter: blur(10px);
             max-height: 85vh; overflow-y: auto;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         section { display: none; animation: fadeIn 0.8s ease; }
         section.active { display: block; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        h1 { font-family: 'Dancing Script', cursive; color: var(--dark-pink); margin-bottom: 10px; }
-        p { font-size: 0.95rem; line-height: 1.4; color: #333; }
+        h1 { font-family: 'Dancing Script', cursive; color: var(--dark-pink); margin-bottom: 15px; }
+        p { font-size: 0.9rem; line-height: 1.6; color: #333; margin-bottom: 15px; text-align: justify; }
 
         button {
             background-color: var(--dark-pink); color: white;
-            border: none; padding: 12px 20px; margin: 8px 0;
+            border: none; padding: 14px 20px; margin: 10px 0;
             border-radius: 50px; cursor: pointer; width: 100%;
             font-size: 1rem; font-weight: 600; transition: 0.3s;
         }
 
         /* --- BALLOONS --- */
         .balloon-box { position: relative; width: 100%; animation: riseUp 3.5s ease-out forwards; }
-        .balloon { width: 40px; height: 50px; background: var(--dark-pink); border-radius: 50%; margin: 0 auto; }
-        .string { width: 2px; height: 35px; background: #666; margin: 0 auto; }
+        .balloon { width: 40px; height: 50px; background: var(--dark-pink); border-radius: 50%; margin: 0 auto; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2); }
+        .string { width: 2px; height: 40px; background: #777; margin: 0 auto; }
 
         @keyframes riseUp { from { transform: translateY(100vh); } to { transform: translateY(0); } }
 
@@ -66,20 +67,20 @@
         .cut-string .string { opacity: 0; transition: 0.5s; }
 
         /* --- RUNAWAY BUTTON --- */
-        #nahiButton { position: relative; transition: all 0.15s ease; z-index: 1000; }
+        #nahiButton { position: relative; transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000; }
 
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
-        .grid img { width: 100%; height: 100px; object-fit: cover; border-radius: 12px; }
+        .grid img { width: 100%; height: 110px; object-fit: cover; border-radius: 12px; border: 2px solid white; }
 
-        /* Poetry Style */
         .poetry-box {
-            font-family: 'Dancing Script', cursive;
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-            margin: 15px 0;
-            text-align: center;
+            font-family: 'Dancing Script', cursive; font-size: 1.15rem;
+            color: #444; line-height: 1.8; margin: 20px 0;
+            text-align: center; border-top: 1px solid #ffccd5; padding-top: 15px;
         }
+
+        /* Scrollbar styling for the long message */
+        .container::-webkit-scrollbar { width: 5px; }
+        .container::-webkit-scrollbar-thumb { background: var(--dark-pink); border-radius: 10px; }
     </style>
 </head>
 <body onmousemove="spawnTrail(event)" ontouchmove="spawnTrail(event)">
@@ -94,7 +95,7 @@
 
     <section id="home">
         <div class="container">
-            <p>Hlooo baby gurlll 😘<br>Do you want to see something cwazyyyyy 😏?</p>
+            <p style="text-align: center;">Hlooo baby gurlll 😘<br>Do you want to see something cwazyyyyy 😏?</p>
             <div id="buttonWrapper">
                 <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('sorry')">sorry na 🥺</button></div>
                 <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('video-page')">something i made for you 😅</button></div>
@@ -106,9 +107,9 @@
 
     <section id="sorry">
         <div class="container">
-            <p>sorry na malkin ji 😅</p>
-            <img src="assets/cat.png" style="width: 130px;">
-            <p>ye lijiye phool ab maan jaiye na 😅<br>ab maan gyi na aap 😅</p>
+            <p style="text-align: center;">sorry na malkin ji 😅</p>
+            <img src="assets/cat.png" style="width: 140px; margin-bottom: 10px;">
+            <p style="text-align: center;">ye lijiye phool ab maan jaiye na 😅<br>ab maan gyi na aap 😅</p>
             <button onclick="showSection('home')">Haa maan gye</button>
             <button id="nahiButton" onmouseover="runAway()" onclick="runAway()">Nahi abhi nahi mane</button>
         </div>
@@ -116,7 +117,7 @@
 
     <section id="video-page">
         <div class="container">
-            <video controls style="width: 100%; border-radius: 15px;">
+            <video controls style="width: 100%; border-radius: 15px; margin-bottom: 10px;">
                 <source src="assets/v1.mp4" type="video/mp4">
             </video>
             <button onclick="showSection('home')">there's more 😅</button>
@@ -137,20 +138,23 @@
     <section id="newyear">
         <div class="container">
             <h1>Happy New Year! 🎆</h1>
-            <p style="font-weight: 600;">Happy New Year hamari Vidhi ji ❤️</p>
+            <p>As this year ends, I just want you to know how incredibly grateful I am for you. You are truly the best thing that happened to me. You made my year so much better in ways I can’t even fully explain. Every conversation with you means the world to me. I genuinely love talking to you, hearing your thoughts, your laugh, you.</p>
+            <p>Even with the long distance between us, thank you for always caring about me, for checking on me, and for being there when I needed you. It never goes unnoticed, and it means more to me than you know.</p>
+            <p>I also want to say I’m deeply sorry for the things I’ve done that hurt you. I know I’ve hurt you more than once, and I regret it more than I can put into words. You didn’t deserve that, and I truly want to be better, for you and for us.</p>
+            <p>I absolutely love you so, so much. I’m thankful for you today, tomorrow, and in the year ahead. I hope this new year brings us closer, stronger, and happier together. 💖</p>
+            
             <div class="poetry-box">
                 Tum Ganga si pavitra koi, main maila sa jal priye.<br>
-                Tum avismarniya saundarya koi, main bas beeta kal priye.<br>
-                Tum Lakshmi ki daulat , main phata purana note priye.<br>
+                Tum avismarniya saundarya koi, main bas beta kal priye.<br>
+                Tum Lakshmi ki daulat ho, main phata purana note priye.<br>
                 Tum roshni bhari subah ho, main andheri si raat priye.<br>
                 Tum khamoshi mein bhi sukoon ho, main shor bhara jazbaat priye.<br>
-                Tum thehri hui baarish koi, main bhatakta sa baadal priye.<br>
-                Tum poori si kahani koi, main adhoora sa panna priye.<br>
+                Tum thehri hui baarish ho, main bhatakta sa baadal priye.<br>
+                Tum poori si kahani ho, main adhoora sa panna priye.<br>
                 Tum har dua ka jawaab ho, main sawalon ka bojh priye.<br>
                 Tum saans lene ka sabab ho, main thaka hua dil priye.<br>
                 <b>Phir bhi agar tum saath ho, toh main bhi kuch ban jaun priye.</b>
             </div>
-            <p style="font-size: 0.8rem; margin-top: 10px;">Vo thoda time kam tha na to bas itna hi ho paya 😅</p>
             <button onclick="showSection('home')">back to home page</button>
         </div>
     </section>
@@ -160,34 +164,24 @@
             const x = e.pageX || (e.touches ? e.touches[0].pageX : 0);
             const y = e.pageY || (e.touches ? e.touches[0].pageY : 0);
             const heart = document.createElement('div');
-            heart.className = 'trail-heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = x + 'px';
-            heart.style.top = y + 'px';
+            heart.className = 'trail-heart'; heart.innerHTML = '❤️';
+            heart.style.left = x + 'px'; heart.style.top = y + 'px';
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 1000);
         }
 
         function runAway() {
             const btn = document.getElementById('nahiButton');
-            const container = btn.parentElement;
-            const x = Math.random() * (window.innerWidth - 100) - (window.innerWidth / 2 - 50);
-            const y = Math.random() * (window.innerHeight - 100) - (window.innerHeight / 2 - 50);
+            // Keeps button within screen bounds
+            const x = Math.random() * (window.innerWidth - 150) - (window.innerWidth / 2 - 75);
+            const y = Math.random() * (window.innerHeight - 150) - (window.innerHeight / 2 - 75);
             btn.style.position = 'fixed';
-            btn.style.left = '50%';
-            btn.style.top = '50%';
-            btn.style.width = '150px';
+            btn.style.left = '50%'; btn.style.top = '50%';
+            btn.style.width = '160px';
             btn.style.transform = `translate(${x}px, ${y}px)`;
         }
 
         function startApp() {
-            for(let i=0; i<15; i++) setTimeout(() => {
-                const h = document.createElement('div');
-                h.className = 'trail-heart'; h.innerHTML = '💖';
-                h.style.left = Math.random() * 100 + 'vw'; h.style.top = '100vh';
-                h.style.animation = 'floatUp 3s forwards';
-                document.body.appendChild(h);
-            }, i * 100);
             showSection('home');
             setTimeout(() => {
                 document.querySelectorAll('.balloon-box').forEach(b => b.classList.add('cut-string'));
@@ -197,11 +191,12 @@
         function showSection(id) {
             document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
+            // Reset scroll to top when changing sections
+            document.querySelector('.container').scrollTop = 0;
         }
 
         function checkNewYear() {
             const now = new Date();
-            // Yahan 2026 set hai, testing ke liye aap year change kar sakte hain
             if (now.getFullYear() >= 2026) {
                 showSection('newyear');
                 fireworks();
@@ -211,19 +206,20 @@
         }
 
         function fireworks() {
-            for(let i=0; i<50; i++) {
+            for(let i=0; i<60; i++) {
                 setTimeout(() => {
                     const h = document.createElement('div');
                     h.className = 'trail-heart';
-                    h.innerHTML = ['❤️','💖','✨','🌸'][Math.floor(Math.random()*4)];
+                    h.innerHTML = ['❤️','💖','✨','🌸','🌟'][Math.floor(Math.random()*5)];
                     h.style.left = Math.random() * 100 + 'vw';
                     h.style.top = Math.random() * 100 + 'vh';
-                    h.style.fontSize = (Math.random() * 20 + 20) + 'px';
-                    h.style.animation = 'fadeOutHeart 2s forwards';
+                    h.style.fontSize = (Math.random() * 25 + 20) + 'px';
+                    h.style.animation = 'fadeOutHeart 2.5s forwards';
                     document.body.appendChild(h);
-                }, i * 50);
+                }, i * 60);
             }
         }
     </script>
 </body>
-</html>
+                                                                                                       </html>
+    
