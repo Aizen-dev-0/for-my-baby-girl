@@ -6,79 +6,42 @@
     <title>For My Baby Girl 💖</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --dark-pink: #ff006e; 
-            --white: rgba(255, 255, 255, 0.9);
-        }
+        :root { --dark-pink: #ff006e; --white: rgba(255, 255, 255, 0.9); }
+        body, html { margin: 0; padding: 0; height: 100%; width: 100%; font-family: 'Poppins', sans-serif; overflow: hidden; touch-action: none; }
+        body { background-image: url('assets/bg.jpg'); background-size: cover; background-position: center; display: flex; justify-content: center; align-items: center; }
 
-        body, html {
-            margin: 0; padding: 0; height: 100%; width: 100%;
-            font-family: 'Poppins', sans-serif; overflow: hidden;
-            touch-action: none;
-        }
+        /* Heart Trail */
+        .trail-heart { position: fixed; pointer-events: none; color: var(--dark-pink); font-size: 15px; animation: fadeOutHeart 1s forwards; z-index: 999; }
+        @keyframes fadeOutHeart { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(0.5) translateY(-20px); } }
 
-        body {
-            background-image: url('assets/bg.jpg'); 
-            background-size: cover; background-position: center;
-            display: flex; justify-content: center; align-items: center;
-        }
-
-        /* --- HEART TRAIL --- */
-        .trail-heart {
-            position: fixed; pointer-events: none; color: var(--dark-pink);
-            font-size: 15px; animation: fadeOutHeart 1s forwards; z-index: 999;
-        }
-        @keyframes fadeOutHeart {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0; transform: scale(0.5) translateY(-20px); }
-        }
-
-        .container {
-            width: 85%; max-width: 420px; background: var(--white);
-            padding: 25px; border-radius: 30px; text-align: center;
-            position: relative; z-index: 10; backdrop-filter: blur(10px);
-            max-height: 85vh; overflow-y: auto;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
+        .container { width: 85%; max-width: 420px; background: var(--white); padding: 25px; border-radius: 30px; text-align: center; position: relative; z-index: 10; backdrop-filter: blur(10px); max-height: 85vh; overflow-y: auto; box-shadow: 0 20px 50px rgba(0,0,0,0.3); }
         section { display: none; animation: fadeIn 0.8s ease; }
         section.active { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-        h1 { font-family: 'Dancing Script', cursive; color: var(--dark-pink); margin-bottom: 15px; }
-        p { font-size: 0.9rem; line-height: 1.6; color: #333; margin-bottom: 15px; text-align: justify; }
+        h1, h2, h3 { font-family: 'Dancing Script', cursive; color: var(--dark-pink); }
+        p { font-size: 0.9rem; line-height: 1.6; color: #333; margin-bottom: 15px; }
 
-        button {
-            background-color: var(--dark-pink); color: white;
-            border: none; padding: 14px 20px; margin: 10px 0;
-            border-radius: 50px; cursor: pointer; width: 100%;
-            font-size: 1rem; font-weight: 600; transition: 0.3s;
-        }
+        button { background-color: var(--dark-pink); color: white; border: none; padding: 14px 20px; margin: 10px 0; border-radius: 50px; cursor: pointer; width: 100%; font-size: 1rem; font-weight: 600; transition: 0.3s; }
 
-        /* --- BALLOONS --- */
+        /* Balloons */
         .balloon-box { position: relative; width: 100%; animation: riseUp 3.5s ease-out forwards; }
         .balloon { width: 40px; height: 50px; background: var(--dark-pink); border-radius: 50%; margin: 0 auto; box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2); }
         .string { width: 2px; height: 40px; background: #777; margin: 0 auto; }
-
         @keyframes riseUp { from { transform: translateY(100vh); } to { transform: translateY(0); } }
-
         .cut-string .balloon { transform: translateY(-100vh); opacity: 0; transition: 2.5s ease-in; }
         .cut-string .string { opacity: 0; transition: 0.5s; }
 
-        /* --- RUNAWAY BUTTON --- */
-        #nahiButton { position: relative; transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 1000; }
+        /* Runaway Button */
+        #nahiButton { position: relative; transition: all 0.2s ease; z-index: 1000; }
+
+        /* Photo Frame */
+        .polaroid { background: white; padding: 10px 10px 25px 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); transform: rotate(-2deg); margin: 20px auto; width: 80%; }
+        .polaroid img { width: 100%; height: auto; display: block; }
 
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 15px 0; }
         .grid img { width: 100%; height: 110px; object-fit: cover; border-radius: 12px; border: 2px solid white; }
-
-        .poetry-box {
-            font-family: 'Dancing Script', cursive; font-size: 1.15rem;
-            color: #444; line-height: 1.8; margin: 20px 0;
-            text-align: center; border-top: 1px solid #ffccd5; padding-top: 15px;
-        }
-
-        /* Scrollbar styling for the long message */
+        .poetry-box { font-family: 'Dancing Script', cursive; font-size: 1.15rem; color: #444; line-height: 1.8; margin: 20px 0; text-align: center; }
         .container::-webkit-scrollbar { width: 5px; }
         .container::-webkit-scrollbar-thumb { background: var(--dark-pink); border-radius: 10px; }
     </style>
@@ -95,7 +58,7 @@
 
     <section id="home">
         <div class="container">
-            <p style="text-align: center;">Hlooo baby gurlll 😘<br>Do you want to see something cwazyyyyy 😏?</p>
+            <p>Hlooo baby gurlll 😘<br>Do you want to see something cwazyyyyy 😏?</p>
             <div id="buttonWrapper">
                 <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('sorry')">sorry na 🥺</button></div>
                 <div class="balloon-box"><div class="balloon"></div><div class="string"></div><button onclick="showSection('video-page')">something i made for you 😅</button></div>
@@ -107,9 +70,9 @@
 
     <section id="sorry">
         <div class="container">
-            <p style="text-align: center;">sorry na malkin ji 😅</p>
+            <p>sorry na malkin ji 😅</p>
             <img src="assets/cat.png" style="width: 140px; margin-bottom: 10px;">
-            <p style="text-align: center;">ye lijiye phool ab maan jaiye na 😅<br>ab maan gyi na aap 😅</p>
+            <p>ab maan gyi na aap 😅</p>
             <button onclick="showSection('home')">Haa maan gye</button>
             <button id="nahiButton" onmouseover="runAway()" onclick="runAway()">Nahi abhi nahi mane</button>
         </div>
@@ -117,7 +80,7 @@
 
     <section id="video-page">
         <div class="container">
-            <video controls style="width: 100%; border-radius: 15px; margin-bottom: 10px;">
+            <video controls style="width: 100%; border-radius: 15px;">
                 <source src="assets/v1.mp4" type="video/mp4">
             </video>
             <button onclick="showSection('home')">there's more 😅</button>
@@ -135,17 +98,19 @@
         </div>
     </section>
 
-        <section id="newyear">
+    <section id="newyear">
         <div class="container">
-            <h1>Happy New Year Vidhi ji 😘</h1>
-            <p>As this year ends, I just want you to know how incredibly grateful I am for you. You are truly the best thing that happened to me. You made my year so much better in ways I can’t even fully explain. Every conversation with you means the world to me. I genuinely love talking to you, hearing your thoughts, your laugh, you.</p>
-            <p>Even with the long distance between us, thank you for always caring about me, for checking on me, and for being there when I needed you. It never goes unnoticed, and it means more to me than you know.</p>
-            <p>I also want to say I’m deeply sorry for the things I’ve done that hurt you. I know I’ve hurt you more than once, and I regret it more than I can put into words. You didn’t deserve that, and I truly want to be better, for you and for us.</p>
-            <p>I absolutely love you so, so much. I’m thankful for you today, tomorrow, and in the year ahead. I hope this new year brings us closer, stronger, and happier together. 💖</p>
-            
-            <h3 style="font-family: 'Dancing Script', cursive; color: var(--dark-pink); margin-top: 25px; margin-bottom: 5px;">Something i wrote for you Malkin ji 😅</h3>
-            
-            <div class="poetry-box" style="margin-top: 5px; border-top: none;">
+            <h2>Happy New Year hamari Vidhi ji 😘😘</h2>
+            <p>As this year ends, I just want you to know how incredibly grateful I am for you. You are truly the best thing that happened to me😅 . You made my year so much better in ways I can’t even fully explain. Every conversation with you means the world to me. I genuinely love talking to you, hearing your thoughts, your laugh, you 😘.</p>
+            <p>Even with the long distance between us, thank you for always caring about me, for checking on me, and for being there when I needed you. It never goes unnoticed, and it means more to me than you know. I want us to always stay together like this...</p>
+            <p>I also want to say I’m deeply sorry for the things I’ve done that hurt you. I know I’ve hurt you more than once 🥲, and I regret it more than I can put into words. You didn’t deserve that, and I truly want to be better, for you and for us. I absolutely love you so, so much 😘💝.</p>
+
+            <div class="polaroid">
+                <img src="assets/us.jpg" alt="Our Memory">
+            </div>
+
+            <h3>Something i wrote for you Malkin ji 😅</h3>
+            <div class="poetry-box">
                 Tum Ganga si pavitra koi, main maila sa jal priye.<br>
                 Tum avismarniya saundarya koi, main bas beta kal priye.<br>
                 Tum Lakshmi ki daulat ho, main phata purana note priye.<br>
@@ -157,11 +122,13 @@
                 Tum saans lene ka sabab ho, main thaka hua dil priye.<br>
                 <b>Phir bhi agar tum saath ho, toh main bhi kuch ban jaun priye.</b>
             </div>
-            <p style="font-size: 0.8rem; text-align: center; margin-top: 15px;">Vo thoda time kam tha na to bas itna hi ho paya 😅</p>
+
+            <p style="font-weight: 600; font-style: italic; color: var(--dark-pink);">
+                Thanks for being in my life thanks for being the first person to see the first web page i made thanks for always helping me and sorry if there was any mistake in it 😅. I love you soo much Vidhi ji 😘
+            </p>
             <button onclick="showSection('home')">back to home page</button>
         </div>
-        </section>
-    
+    </section>
 
     <script>
         function spawnTrail(e) {
@@ -173,57 +140,37 @@
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 1000);
         }
-
         function runAway() {
             const btn = document.getElementById('nahiButton');
-            // Keeps button within screen bounds
             const x = Math.random() * (window.innerWidth - 150) - (window.innerWidth / 2 - 75);
             const y = Math.random() * (window.innerHeight - 150) - (window.innerHeight / 2 - 75);
-            btn.style.position = 'fixed';
-            btn.style.left = '50%'; btn.style.top = '50%';
-            btn.style.width = '160px';
+            btn.style.position = 'fixed'; btn.style.left = '50%'; btn.style.top = '50%';
             btn.style.transform = `translate(${x}px, ${y}px)`;
         }
-
         function startApp() {
             showSection('home');
-            setTimeout(() => {
-                document.querySelectorAll('.balloon-box').forEach(b => b.classList.add('cut-string'));
-            }, 3500);
+            setTimeout(() => { document.querySelectorAll('.balloon-box').forEach(b => b.classList.add('cut-string')); }, 3500);
         }
-
         function showSection(id) {
             document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            // Reset scroll to top when changing sections
             document.querySelector('.container').scrollTop = 0;
         }
-
         function checkNewYear() {
-            const now = new Date();
-            if (now.getFullYear() >= 2026) {
-                showSection('newyear');
-                fireworks();
-            } else {
-                alert("not yet have some patience till new year 😅");
-            }
+            if (new Date().getFullYear() >= 2026) { showSection('newyear'); fireworks(); }
+            else { alert("not yet have some patience till new year 😅"); }
         }
-
         function fireworks() {
             for(let i=0; i<60; i++) {
                 setTimeout(() => {
                     const h = document.createElement('div');
-                    h.className = 'trail-heart';
-                    h.innerHTML = ['❤️','💖','✨','🌸','🌟'][Math.floor(Math.random()*5)];
-                    h.style.left = Math.random() * 100 + 'vw';
-                    h.style.top = Math.random() * 100 + 'vh';
-                    h.style.fontSize = (Math.random() * 25 + 20) + 'px';
-                    h.style.animation = 'fadeOutHeart 2.5s forwards';
+                    h.className = 'trail-heart'; h.innerHTML = ['❤️','💖','✨','🌸'][Math.floor(Math.random()*4)];
+                    h.style.left = Math.random() * 100 + 'vw'; h.style.top = Math.random() * 100 + 'vh';
+                    h.style.fontSize = (Math.random() * 20 + 20) + 'px'; h.style.animation = 'fadeOutHeart 2.5s forwards';
                     document.body.appendChild(h);
                 }, i * 60);
             }
         }
     </script>
 </body>
-                                                                                                       </html>
-    
+</html>
